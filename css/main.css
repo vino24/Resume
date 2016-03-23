@@ -3,7 +3,7 @@
 * {
     margin: 0;
     padding: 0;
-    font-family: Microsoft YaHei, sans-serif;
+    font-family: Arial, sans-serif;
 }
 
 a {
@@ -103,15 +103,14 @@ header {
     float: right;
     width: 487px;
     background: #fff;
-    margin-bottom: 100px;
-    height: 2400px;
+    height: 2300px;
 }
 
 .sidebar {
     float: left;
     width: 487px;
     background: #fff;
-    height: 2400px;
+    height: 2300px;
 }
 
 /* -----------------------------------
@@ -230,7 +229,7 @@ header {
     background-color: #ededed;
     border: 1px solid #b1b1b1;
     box-shadow: 0 0.1em 0.3em #ccc;
-    top: 36%;
+    top: 87%;
     margin-left: 20px;
 }
 
@@ -265,7 +264,7 @@ header {
 #wechat {
     position: absolute;
     width: 120px;
-    top: 68%;
+    top: 36%;
     left: 18%;
     padding: 0.5em;
     border: 1px solid #b1b1b1;
@@ -284,7 +283,7 @@ header {
 /* website */
 iframe {
     position: absolute;
-    top: 78%;
+    top: 46%;
     left: 5%;
     padding: 0.3em;
     margin: 0.5em;

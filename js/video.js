@@ -93,7 +93,7 @@
     //  视频播放条
     function getProgress() {
         playProgress.style.width = (video.currentTime / video.duration * 100) + "%";
-        showProgress.innerHTML = (Math.round(video.currentTime * 100) / 100) + "s";
+        showProgress.innerHTML = timeConvent(video.currentTime);
     }
 
     //  视频播放条点击事件捕获处理
@@ -110,26 +110,45 @@
 
     //  更新播放进度
     function enhanceVideoSeek(e) {
-        console.log(getElementPositionFixed(progressWrap).x);
-        var length = e.pageX - getElementPosition(progressWrap).x;
+        //  console.log(getElementPosition(progressWrap).x);
+        //  console.log(progressWrap.getBoundingClientRect().left);
+        var length = e.clientX - progressWrap.getBoundingClientRect().left;
         var percent = length / progressWrap.offsetWidth;
         video.currentTime = (percent * video.duration);
-        console.log(video.currentTime);
+        //  console.log(video.currentTime);
         playProgress.style.width = (video.currentTime / video.duration * 100) + "%";
     }
 
-    function getElementPosition(elt) {
-        var x = 0, y = 0;
-        for (var e = elt; e != null; e = e.offsetParent) {
-            x += e.offsetLeft;
-            y += e.offsetTop;
-        }
-
-        for (var e = elt.parentNode; e != null && e.nodeType == 1; e = e.parentNode) {
-            x -= e.scrollLeft;
-            y -= e.scrollTop;
-        }
-        return {x: x, y: y};
+    //  时间格式化
+    function timeConvent(ts) {
+        ts = Math.round(ts * 100) / 100;
+        var mm = checkTime(parseInt(ts / 60));
+        var ss = checkTime(parseInt(ts % 60));
+        return mm + ":" + ss;
     }
 
+    //  时间美化
+    function checkTime(i) {
+        if (i < 10) {
+            i = "0" + i;
+        }
+        return i;
+    }
+
+    /*
+     //  获取视口坐标(getBoundingClientRect代替)
+     function getElementPosition(elt) {
+     var x = 0, y = 0;
+     for (var e = elt; e != null; e = e.offsetParent) {
+     x += e.offsetLeft;
+     y += e.offsetTop;
+     }
+
+     for (var e = elt.parentNode; e != null && e.nodeType == 1; e = e.parentNode) {
+     x -= e.scrollLeft;
+     y -= e.scrollTop;
+     }
+     return {x: x, y: y};
+     }
+     */
 }(this, document))
